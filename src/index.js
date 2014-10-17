@@ -34,7 +34,7 @@ if (!process.browser) {
     };
 }
 
-START_MS = Date.now() + now();
+START_MS = Date.now();
 
 time.now = now;
 
