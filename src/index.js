@@ -1,10 +1,10 @@
 var time = module.exports,
-    performance, HR_TIME, START_MS, now;
+    dateNow, performance, HR_TIME, START_MS, now;
 
 
-Date.now || (Date.now = function now() {
+dateNow = Date.now || function now() {
     return (new Date()).getTime();
-});
+};
 
 
 if (!process.browser) {
@@ -26,7 +26,7 @@ if (!process.browser) {
         performance.msNow ||
         performance.oNow ||
         function now() {
-            return Date.now() - START_MS;
+            return dateNow() - START_MS;
         }
     );
 
@@ -35,7 +35,7 @@ if (!process.browser) {
     };
 }
 
-START_MS = Date.now();
+START_MS = dateNow();
 
 time.now = now;
 
