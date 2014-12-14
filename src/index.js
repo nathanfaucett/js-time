@@ -20,7 +20,8 @@ if (!process.browser) {
 } else {
     performance = global.performance || {};
 
-    performance.now = performance.now || (
+    performance.now = (
+        performance.now ||
         performance.webkitNow ||
         performance.mozNow ||
         performance.msNow ||
