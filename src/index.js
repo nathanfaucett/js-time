@@ -44,6 +44,5 @@ START_MS = dateNow();
 time.now = now;
 
 time.stamp = function stamp() {
-
     return START_MS + now();
 };
