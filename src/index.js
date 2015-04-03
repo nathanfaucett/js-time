@@ -1,7 +1,7 @@
 var environment = require("environment");
 
 
-var time = module.exports,
+var time = exports,
     dateNow, performance, HR_TIME, START_MS, now;
 
 
@@ -10,17 +10,7 @@ dateNow = Date.now || function now() {
 };
 
 
-if (environment.node) {
-    HR_TIME = process.hrtime();
-
-    now = function now() {
-        var hrtime = process.hrtime(HR_TIME),
-            ms = hrtime[0] * 1e3,
-            ns = hrtime[1] * 1e-6;
-
-        return ms + ns;
-    };
-} else {
+if (environment.browser) {
     performance = environment.window.performance || {};
 
     performance.now = (
@@ -36,6 +26,16 @@ if (environment.node) {
 
     now = function now() {
         return performance.now();
+    };
+} else {
+    HR_TIME = process.hrtime();
+
+    now = function now() {
+        var hrtime = process.hrtime(HR_TIME),
+            ms = hrtime[0] * 1e3,
+            ns = hrtime[1] * 1e-6;
+
+        return ms + ns;
     };
 }
 
