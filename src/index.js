@@ -10,7 +10,7 @@ dateNow = Date.now || function now() {
 };
 
 
-if (environment.browser) {
+if (!environment.node) {
     performance = environment.window.performance || {};
 
     performance.now = (
