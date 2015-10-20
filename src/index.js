@@ -2,7 +2,7 @@ var now = require("now");
 
 
 var time = exports,
-    START_TIME = now.START_TIME;
+    START_TIME = now.getStartTime();
 
 
 time.now = now;
